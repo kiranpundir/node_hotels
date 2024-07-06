@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const db = require('./db'); // Make sure this connects to your MongoDB instance
-
+require('dotenv').config();
 // const menuRoutes =require('./routes/menuRoutes')
 const personRoutes=require('./routes/personRoutes')
 app.use('/person',personRoutes)
@@ -60,7 +60,7 @@ app.get('/menu', async (req, res) => {
 
 
 // Start the server
-const PORT = 3000;
+const PORT =process.env.PORT|| 3000;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
